@@ -3,7 +3,7 @@ import AppReducer from './AppReducer'
 
 const initialState = {
     employees: [
-        { id: 1, name: 'Ishan Manandhar',type:"personal",phone:"9899990010", location: 'Kathmandu', designation: 'Frontend Dev',checked:true }
+        { id: 1, name: 'Himanshu yadav',type:"personal",phone:"7503643061", location: 'delhi', designation: 'Frontend Dev',checked:true }
     ]
 }
 
