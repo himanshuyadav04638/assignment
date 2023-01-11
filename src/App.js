@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './stylesheet/App.css';
+import { Home } from './components/Home';
+import { Addemployee } from './components/Addemployee';
+import { Editemployee } from './components/Editemployee';
+import { Routes, Route} from "react-router-dom";
 
-function App() {
+
+
+import { GlobalProvider } from './context/GlobalState';
+
+
+const  App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalProvider>
+     
+       <Routes>
+       <Route exact path="/" element={<Home />} />
+       <Route exact  path="/add" element={<Addemployee />}/>
+       <Route exact path="/edit/:id"  element={<Editemployee />}  />
+       </Routes>
+  
+    </GlobalProvider>
   );
 }
 
