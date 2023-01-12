@@ -9,6 +9,8 @@ export const Addemployee = () => {
     const [designation, setDesignation] = useState('');
     const [type,setType] =useState('')
     const [phone,setPhone] =useState('')
+    const [profile,setProfile] =useState('')
+    const [image, setImage] = useState(null)
     const { addEmployee, employees } = useContext(GlobalContext);
     const [checked, setChecked] = React.useState(false);
 
@@ -28,10 +30,19 @@ export const Addemployee = () => {
             designation,
             type,
             phone,
-            checked
+            checked,
+            image
         }
         addEmployee(newEmployee);
         navigate('/')
+    }
+
+  
+
+    const onImageChange = (event) => {
+     if (event.target.files && event.target.files[0]) {
+       setImage(URL.createObjectURL(event.target.files[0]));
+     }
     }
 
 
@@ -66,6 +77,9 @@ export const Addemployee = () => {
                             Is whatsapp
                         </label>
                         <input   type="checkbox"  checked={checked}  onChange={handleChange}/>
+                    </div>
+                    <div className="w-full  mb-5">
+                        <input type="file"  onChange={onImageChange}  />     
                     </div>
 
 

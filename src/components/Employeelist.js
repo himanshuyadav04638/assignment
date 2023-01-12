@@ -6,12 +6,18 @@ import { GlobalContext } from '../context/GlobalState';
 
 export const Employeelist = () => {
     const { employees, removeEmployee, editEmployee } = useContext(GlobalContext);
+    console.log(employees,"check")
     return (
         <Fragment>
             {employees.length > 0 ? <Fragment>
                 {employees.map(employee => (
                     <div className="flex items-center bg-gray-100 mb-10 shadow" key={employee.id}>
-                        <div className="flex-auto text-left px-4 py-2 m-2">
+                        <div className='w-24 h-24  m-2 rounded flex items-center rounded-full ' >
+                           <img src={employee?.image} alt="" className='rounded-full object-fit w-20 h-20' />
+
+                        </div>
+                        <div className="flex-auto text-left px-1 py-2 m-2">
+                        
                             <p className="text-gray-900 leading-none">{employee.name}</p>
                             <p className="text-gray-600">{employee.designation}</p>
                             <span className="inline-block text-sm font-semibold mt-1">{employee.type} , {employee.checked ? "yes this number on whatsapp" : "not on whatsapp" } ,  {employee.phone}</span>

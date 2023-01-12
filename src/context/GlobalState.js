@@ -1,9 +1,10 @@
 import React, { createContext, useReducer } from 'react';
-import AppReducer from './AppReducer'
+import AppReducer from './AppReducer';
+import person from "../Assests/person.jpeg"
 
 const initialState = {
     employees: [
-        { id: 1, name: 'Himanshu yadav',type:"personal",phone:"7503643061", location: 'delhi', designation: 'Frontend Dev',checked:true }
+        { id: 1, name: 'Himanshu yadav',type:"personal",phone:"7503643061", location: 'delhi', designation: 'Frontend Dev',checked:true,image:person }
     ]
 }
 

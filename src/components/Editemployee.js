@@ -6,8 +6,10 @@ import { useNavigate, Link,useParams } from "react-router-dom";
 export const Editemployee = (route) => {
     let navigate = useNavigate();
     const { employees, editEmployee } = useContext(GlobalContext);
-    const [selectedUser, setSeletedUser] = useState({ id: null, name: '', designation: '', location: '',type:'',phone:'',checked:'' });
+    const [selectedUser, setSeletedUser] = useState({ id: null, name: '', designation: '', location: '',type:'',phone:'',checked:''});
     const currentUserId = useParams();
+    const [image, setImage] = useState(null)
+
     console.log(currentUserId,"id")
     // const [type,setType] =useState('')
     // const [phone,setPhone] =useState('')
@@ -19,9 +21,12 @@ export const Editemployee = (route) => {
         // eslint-disable-next-line
     }, []);
 
+
     const onSubmit = e => {
         e.preventDefault();
-        editEmployee(selectedUser);
+        const data={...selectedUser,image}
+        console.log(data,"Data")
+        editEmployee(data);
         navigate('/');
     }
 
@@ -30,14 +35,18 @@ export const Editemployee = (route) => {
     if (!selectedUser || !selectedUser.id) {
         return <div>sdf</div>
     }
-
+    const onImageChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+          setImage(URL.createObjectURL(event.target.files[0]));
+        }
+   }
     return (
         <Fragment>
             <div className="w-full max-w-sm container mt-20 mx-auto">
                 <form onSubmit={onSubmit}>
                     <div className="w-full mb-5">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="name">
-                            Name of employee
+                            Name 
                         </label>
                         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline" value={selectedUser.name} onChange={(e) => handleOnChange('name', e.target.value)} type="text" placeholder="Enter name" />
                     </div>
@@ -63,6 +72,9 @@ export const Editemployee = (route) => {
                             Is whatsapp
                         </label>
                         <input   type="checkbox"  checked={selectedUser.checked}  onChange={(e) => handleOnChange('checked', e.target.checked)}/>
+                    </div>
+                    <div className="w-full  mb-5">
+                        <input type="file"  onChange={onImageChange}  />     
                     </div>
 
                     <div className="w-full  mb-5">
