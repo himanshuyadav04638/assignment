@@ -43,9 +43,9 @@ export const Editemployee = (route) => {
                     </div>
                     <div className="w-full  mb-5">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="location">
-                            Location
+                            Phone
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline" value={selectedUser.location} onChange={(e) => handleOnChange('location', e.target.value)} type="text" placeholder="Enter location" />
+                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:text-gray-600 focus:shadow-outline" value={selectedUser.phone} onChange={(e) => handleOnChange('phone', e.target.value)} type="text" placeholder="Enter location" />
                     </div>
 
                     <div className="w-full  mb-5">
